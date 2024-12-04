@@ -36,7 +36,6 @@ const SymptomForm: React.FC<SymptomFormProps> = ({ navigation }) => {
         const fetchData = async () => {
             try {
                 const response = await fetchSymptoms();
-                console.log('api response', response);
                 if (response?.data) {
                     const allCategories = response.data.map((item: { category: string }) => item.category);
                     setCategories(allCategories);
@@ -134,16 +133,6 @@ const SymptomForm: React.FC<SymptomFormProps> = ({ navigation }) => {
                 </View>
             )}
 
-            {recommendations.length > 0 && (
-                <View style={styles.recommendationsContainer}>
-                    <Text style={styles.label}>Recommendations:</Text>
-                    {recommendations.map((recommendation, index) => (
-                        <Text key={index} style={styles.recommendationItem}>
-                            . {recommendation}
-                        </Text>
-                    ))}
-                </View>
-            )}
 
             <TouchableOpacity
               style={styles.submitButton}
